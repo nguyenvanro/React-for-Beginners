@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
 import './ListUser.scss'
+import { withRouter } from 'react-router-dom';
+
 
 class ListUser extends React.Component {
 
@@ -14,6 +16,10 @@ class ListUser extends React.Component {
             ListUsers: res && res.data && res.data.data ? res.data.data : []
         })
 
+    }
+    handleClickDetail = (user) => {
+        console.log('data user: ', user);
+        this.props.history.push(`/user/${user.id}`)
     }
 
 
@@ -29,6 +35,8 @@ class ListUser extends React.Component {
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>Avatar</th>
+                            <th>View</th>
+
 
                         </tr>
                         {ListUsers && ListUsers.length > 0 &&
@@ -44,24 +52,18 @@ class ListUser extends React.Component {
                                                 <img src={item.avatar} width="25" height="30" />
 
                                             </td>
+                                            <td
+                                                onClick={() => this.handleClickDetail(item)}
+                                            >
+
+                                            </td>
+
                                         </tr>
                                     </>
                                 )
 
                             })
                         }
-
-                        {/* <tr>
-                            <td>Alfreds Futterkiste</td>
-                            <td>Maria Anders</td>
-                            <td>Germany</td>
-                            <td>Germany</td>
-                            <td>Germany</td>
-
-                        </tr> */}
-
-
-
                     </table>
                 </div>
             </>
@@ -70,4 +72,4 @@ class ListUser extends React.Component {
     }
 }
 
-export default ListUser;
+export default withRouter(ListUser);

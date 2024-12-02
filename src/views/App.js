@@ -11,7 +11,7 @@ import {
   Route,
 } from "react-router-dom";
 import ListUser from './Users/ListUser.js';
-
+import DetailUser from './Users/DetailUser.js';
 
 /**
  * 2 components: class component / function component ( function, arrow)
@@ -35,9 +35,14 @@ function App() {
             <Route path="/about">
               <About />
             </Route>
-            <Route path="/user">
+            <Route path="/user" exact>
               <ListUser />
             </Route>
+
+            <Route path="/user/:id">
+              <DetailUser />
+            </Route>
+
           </Switch>
         </header>
 
