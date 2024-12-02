@@ -55,7 +55,6 @@ class ListUser extends React.Component {
                                             <td
                                                 onClick={() => this.handleClickDetail(item)}
                                             >
-
                                             </td>
 
                                         </tr>
